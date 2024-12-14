@@ -4,8 +4,8 @@ jobs:
   amd64:
     runs-on: ubuntu-latest
     steps:
-      - run: apt-get update
-      - run: apt-get install -y git cmake nodejs g++-mingw-w64-x86-64 gnu-efi
+      - run: sudo apt update
+      - run: sudo apt install -y git cmake nodejs g++-mingw-w64-x86-64 gnu-efi
       - run: echo "SHORT_SHA=`echo ${{ github.sha }} | cut -c1-8`" >> $GITHUB_ENV
       - run: git clone --recurse-submodules ${{ github.server_url }}/${{ github.repository }} ${SHORT_SHA}
       - run: cd ${SHORT_SHA} && git checkout ${{ github.sha }}
